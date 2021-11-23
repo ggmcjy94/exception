@@ -13,6 +13,10 @@ import java.net.http.HttpResponse;
 @Controller
 public class ServletExController {
 
+    /**
+     * 이제 오류가 발생했을 때 오류 페이지로 /error 를 기본 요청한다. 스프링 부트가 자동 등록한
+     * BasicErrorController 는 이 경로를 기본으로 받는다
+     */
 
     @GetMapping("/error-ex")
     public void errorEx() {
@@ -22,6 +26,11 @@ public class ServletExController {
     @GetMapping("/error-404")
     public void error404(HttpServletResponse response) throws IOException {
         response.sendError(404, "404 오류");
+    }
+
+    @GetMapping("/error-400")
+    public void error400(HttpServletResponse response) throws IOException {
+        response.sendError(400, "400 오류");
     }
 
     @GetMapping("/error-500")
